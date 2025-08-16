@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    # Persist users.json across container recreations
+    volumes:
+      - app_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  app_data:
